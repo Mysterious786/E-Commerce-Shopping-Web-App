@@ -1,28 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
+//Importing react-redux own provider
+import { Provider } from 'react-redux';
 import App from './App';
-import { UserProvider } from './contexts/user.context';
-import {CategoriesProvider } from './contexts/categories.context';
+// import { UserProvider } from './contexts/user.context';
+// import {CategoriesProvider } from './contexts/categories.context';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import { CartProvider } from './contexts/cart.context';
+import { store } from './store/store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+  {/* With this we have setup our reducer */}
+  <Provider store={store}>
   <BrowserRouter>
   {/* user provider tells us inside of my user tree which component have access to my context anything outside will not be able to access*/}
   {/* user provider can go ino to its children and fetch the data */}
-  <UserProvider>
-  <CategoriesProvider> 
+  {/* <UserProvider> */}
+  {/* <CategoriesProvider>  */}
   <CartProvider>
   <App />
   </CartProvider>
   
-  </CategoriesProvider>
+  {/* </CategoriesProvider> */}
  
-  </UserProvider>
+  {/* </UserProvider> */}
     </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 

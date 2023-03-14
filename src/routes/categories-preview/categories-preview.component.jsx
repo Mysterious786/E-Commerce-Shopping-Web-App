@@ -1,14 +1,16 @@
 //Motto to list out all of the diiferent products
-import { useContext,Fragment } from "react";
+import { Fragment } from "react";
+import {useSelector} from 'react-redux';
 // import './categories-preview.styles.scss'
 //Generating preview for each of these hts,jeans .... from category-preview folder
 //preview <4 in preview means it will only show less than 4 components but on clicking we will go to different routes
-
+import { selectCategoriesMap } from "../../store/categories/category.selector";
 // import ProductCard from "../../components/product-card/product-card.component";
 import CategoriesPreview from "../../components/category-preview/category-preview.component";
-import { CategoriesContext } from "../../contexts/categories.context";
+// import { CategoriesContext } from "../../contexts/categories.context";
 const CategoryPreview=()=>{
-    const {categoriesMap}=useContext(CategoriesContext);
+    // const {categoriesMap}=useContext(CategoriesContext);
+    const categoriesMap = useSelector(selectCategoriesMap);
     return (
         // mapping through category context
         <Fragment> 

@@ -1,0 +1,8 @@
+The Difference between redux and context is that redux will wrap up the whole application, with redux our application will always have access. 
+  Accessibility and Data flow:( Context Api and Redux)
+  Context is divided in two things
+  1. Contexts with UI components.
+  2. Contexts with Reducers.
+
+Store folder will contain all of our redux code.
+Everything in react is refernce by memory

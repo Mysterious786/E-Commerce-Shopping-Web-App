@@ -3,13 +3,29 @@
 import './shop.style.scss'
 //Generating preview for each of these hts,jeans .... from category-preview folder
 //preview <4 in preview means it will only show less than 4 components but on clicking we will go to different routes
-
+import { useEffect } from 'react';
 // import ProductCard from "../../components/product-card/product-card.component";
  import CategoryPreview from "../../components/category-preview/category-preview.component";
 // import { CategoriesContext } from "../../contexts/categories.context";
+import { useDispatch } from 'react-redux';
+import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils';
 import {Routes,Route} from 'react-router-dom';
 import Category from '../category/category.component';
+import {setCategories} from '../../store/categories/category.action'
 const Shop=()=>{
+    const dispatch = useDispatch();
+    useEffect(()=>{
+        const getCategoriesMap=async () => { 
+          const categoriesArray = await   getCategoriesAndDocuments('categories');
+          //Storing new Categories Array in our reducer.
+         
+        dispatch(setCategories(categoriesArray));
+        };
+
+       getCategoriesMap();
+    },[]);
+
+
     // const {categoriesMap}=useContext(CategoriesContext);
     return (
     //     // mapping through category context

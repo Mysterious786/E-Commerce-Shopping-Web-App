@@ -95,14 +95,18 @@ const querySnapshot=await getDocs(q);
 //and the snapshot are the actual data itself
 //we are reducing over this array in order to finally end up with an object
 
-const categoryMap=querySnapshot.docs.reduce((acc,docSnapshot) => {
+// const categoryMap=querySnapshot.docs
+//Mapping all the documents inorder to get the data
+return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 
-        //destructing off the data fro the snapshot
-        const {title,items}=docSnapshot.data();
-        acc[title.toLowerCase()]=items;
-        return acc;
-    },{});
-return categoryMap;
+// .reduce((acc,docSnapshot) => {
+
+//         //destructing off the data fro the snapshot
+//         const {title,items}=docSnapshot.data();
+//         acc[title.toLowerCase()]=items;
+//         return acc;
+//     },{});
+// return categoryMap;
 
 };
 
