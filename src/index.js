@@ -12,25 +12,17 @@ import {BrowserRouter} from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store,persistor } from './store/store';
 // import { render } from "react-dom";
+import { Elements } from '@stripe/react-stripe-js';
+import { stripePromise } from './utils/stripe/stripe.utils';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-  {/* With this we have setup our reducer */}
-  {/* //loading is equal null as it will not persisit anything untill its renfdered */}
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
   <BrowserRouter>
-  {/* user provider tells us inside of my user tree which component have access to my context anything outside will not be able to access*/}
-  {/* user provider can go ino to its children and fetch the data */}
-  {/* <UserProvider> */}
-  {/* <CategoriesProvider>  */}
-  {/* <CartProvider> */}
+<Elements stripe={stripePromise}>
   <App />
-  {/* </CartProvider> */}
-  
-  {/* </CategoriesProvider> */}
- 
-  {/* </UserProvider> */}
+</Elements>
     </BrowserRouter>
     </PersistGate>
     </Provider>
