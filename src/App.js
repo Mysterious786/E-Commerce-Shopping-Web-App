@@ -5,10 +5,10 @@ import Navigation from "./routes/navigation/navigation.component";
 import Authentication from "./routes/authentication/authentication.component";
 import Shop from "./routes/shop/shop.component";
 import Checkout from "./routes/checkout/checkout.component";
+import OrderHistory from "./routes/order-history/order-history.component";
 import { useEffect } from "react";
 
 import { useDispatch } from "react-redux";
-// import { getCurrentUser } from "./utils/firebase/firebase.utils";
 import { checkUserSession } from "./store/user/user.action";
 const App= () => {
   //the dispatch coming from userDispatch never updates it going to be the same all the time
@@ -27,6 +27,7 @@ const App= () => {
         <Route path ='shop/*' element={<Shop   />} /> 
         <Route path ='auth' element={<Authentication   />} /> 
         <Route path='checkout' element={<Checkout/>}/>
+        <Route path='order-history' element={<OrderHistory/>}/>
   
     </Route>
   

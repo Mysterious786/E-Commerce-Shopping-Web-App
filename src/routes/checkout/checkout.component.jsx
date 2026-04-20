@@ -1,50 +1,8 @@
-// import { useContext } from 'react';
-// import { CartContext } from '../../contexts/cart.context';
+// Enhanced checkout with multi-step flow
+import CheckoutEnhanced from './checkout-enhanced.component';
 
-import { selectCartItems, selectCartTotal } from '../../store/cart/cart.selector';
-import { useSelector } from 'react-redux';
-import './checkout.styles.scss'
-//importing things below to export things from cartContext and cartItem the values
-import PaymentForm from '../../components/payment-form/payment-form.component';
-import CheckOutItem from '../../components/checkout-item/checkout-item.component';
-const Checkout=()=>{
-    // const {cartItems,cartTotal}=useContext(CartContext);
-const cartItems = useSelector(selectCartItems);
-const cartTotal = useSelector(selectCartTotal);
-
-    return( 
-    <div className='checkout-container'>
-    <div className='checkout-header'>
-    <div className='header-block'>
-        <span>Product</span>
-    </div>
-    <div className='header-block'>
-        <span>Description</span>
-    </div>
-    <div className='header-block'>
-        <span>Quantity</span>
-    </div>
-    <div className='header-block'>
-        <span>Price</span>
-    </div>
-    <div className='header-block'>
-        <span>Remove</span>
-    </div>
-
-    </div>
-    
-    {cartItems.map((cartItem)=> (
-    <CheckOutItem key={cartItem.id} cartItem={cartItem}/>
-    
-    
-)
-    )}
-    <span className='total'>Total : ${cartTotal}</span>
-    <PaymentForm/>
-    
-    </div>
-    
-    );
-   
+const Checkout = () => {
+  return <CheckoutEnhanced />;
 };
-export default  Checkout;
+
+export default Checkout;
